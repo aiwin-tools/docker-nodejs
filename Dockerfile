@@ -1,4 +1,4 @@
-FROM node:4-stretch
+FROM node:lts-alpine
 
 RUN apt-get update \
     && apt-get install -y jq zip git python python-pip libpython-dev groff uuid-runtime \
@@ -8,6 +8,6 @@ COPY --from=amazon/aws-cli /usr/local /usr/local
 
 RUN git clone https://github.com/aiwin-tools/devops-scripts.git "$HOME/scripts"
 
-RUN npm install -g npm@5.10.0
+RUN npm install -g npm@9.8.1
 
 CMD [ "node" ]
